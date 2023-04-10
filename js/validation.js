@@ -20,16 +20,15 @@ const pristine = new Pristine(imgUploadForm, {
   errorTextClass: 'img-upload__error'
 });
 
-const checkHashtagName = (value) => !value.length ? true : value.split(' ').every((hashtag) => SYMBOL.test(hashtag));
+const createHashtagArray = (value) => value.trim().toLowerCase().split(' ').filter((hashtag) => hashtag);
 
-const checkHashtagLength = (value) => value.split(' ').every((hashtag) => hashtag.length <= HASHTAG_MAX_LENGTH);
+const checkHashtagName = (value) => !value ? true : [...createHashtagArray(value)].every((hashtag) => SYMBOL.test(hashtag));
 
-const checkHashtagCount = (value) => value.split(' ').length <= HASHTAG_MAX_COUNT;
+const checkHashtagLength = (value) => [...createHashtagArray(value)].every((hashtag) => hashtag.length <= HASHTAG_MAX_LENGTH);
 
-const checkHashtagDublicates = (value) => {
-  const hashtagArray = value.toLowerCase().split(' ');
-  return new Set(hashtagArray).size === hashtagArray.length;
-};
+const checkHashtagCount = (value) => [...createHashtagArray(value)].length <= HASHTAG_MAX_COUNT;
+
+const checkHashtagDublicates = (value) => new Set([...createHashtagArray(value)]).size === [...createHashtagArray(value)].length;
 
 const blockSubmitButton = () => {
   imgUploadSubmit.disabled = true;

@@ -18,7 +18,7 @@ const modalUpload = () => {
   document.body.append(messageFragment);
 };
 
-const pressingKey = () => {
+const getPressingKey = () => {
   let windowMessage;
   if (document.querySelector(`.${CLASS_MESSAGE.SUCCESS}`)) {
     windowMessage = document.querySelector(`.${CLASS_MESSAGE.SUCCESS}`);
@@ -33,7 +33,7 @@ const pressingKey = () => {
 function onDocumentKeydown(evt) {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    pressingKey();
+    getPressingKey();
   }
 }
 

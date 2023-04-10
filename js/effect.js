@@ -5,13 +5,15 @@ const EFFECTS = [
   { NAME: 'marvin', STYLE: 'invert', MIN: 0, MAX: 100, STEP: 1, UNIT: '%' },
   { NAME: 'phobos', STYLE: 'blur', MIN: 0, MAX: 3, STEP: 0.1, UNIT: 'px' },
   { NAME: 'heat', STYLE: 'brightness', MIN: 1, MAX: 3, STEP: 0.1, UNIT: '' }];
-const imgUploadPreview = document.querySelector('.img-upload__preview img');
-const effectLevelValue = document.querySelector('.effect-level__value');
-const imgUploadEffectLevel = document.querySelector('.img-upload__effect-level');
-const effectsList = document.querySelector('.effects__list');
-const effectLevelSlider = document.querySelector('.effect-level__slider');
+const imgUploadForm = document.querySelector('.img-upload__form');
+const imgUploadPreview = imgUploadForm.querySelector('.img-upload__preview img');
+const effectLevelValue = imgUploadForm.querySelector('.effect-level__value');
+const imgUploadEffectLevel = imgUploadForm.querySelector('.img-upload__effect-level');
+const effectsList = imgUploadForm.querySelector('.effects__list');
+const effectLevelSlider = imgUploadForm.querySelector('.effect-level__slider');
 const defaultEffect = EFFECTS[0];
 let currentEffect = defaultEffect;
+
 
 const isDefault = () => currentEffect === defaultEffect;
 

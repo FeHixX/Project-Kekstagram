@@ -23,7 +23,7 @@ const checkComments = (array) => {
   return array;
 };
 
-const whichFilterChosen = (currentFilter, array) => {
+const getWhichFilterChosen = (currentFilter, array) => {
   switch (currentFilter) {
     case Filter.DEFAULT:
       return array;
@@ -42,7 +42,7 @@ const onFilterClick = (array, cb) => {
     if (evt.target.matches('.img-filters__button')) {
       evt.target.classList.add('img-filters__button--active');
       const currentFilter = evt.target.id;
-      cb(whichFilterChosen(currentFilter, array));
+      cb(getWhichFilterChosen(currentFilter, array));
     }
   });
 };
